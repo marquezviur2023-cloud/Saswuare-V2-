@@ -1,1 +1,55 @@
-loadstring(game:HttpGet("https://raw.githubusercontent.com/marquezviur2023-cloud/Saswuare-V2/main/Saswuare%20V2"))()
+loadstring local Players = game:GetService("Players")
+local TweenService = game:GetService("TweenService")
+local LocalPlayer = Players.LocalPlayer
+
+-- Mensaje de Bienvenida
+local function Welcome()
+    local Gui = Instance.new("ScreenGui", LocalPlayer.PlayerGui)
+    local txt = Instance.new("TextLabel", Gui)
+    txt.Size = UDim2.new(1, 0, 1, 0)
+    txt.BackgroundTransparency = 1
+    txt.Text = "Saswuare V2 Activado"
+    txt.TextColor3 = Color3.new(1, 1, 1)
+    txt.Font = Enum.Font.GothamBold
+    txt.TextSize = 30
+    task.wait(2)
+    Gui:Destroy()
+end
+task.spawn(Welcome)
+
+-- Menú Principal
+local SG = Instance.new("ScreenGui", LocalPlayer.PlayerGui)
+SG.ResetOnSpawn = false
+
+local Frame = Instance.new("Frame", SG)
+Frame.Size = UDim2.new(0, 200, 0, 150)
+Frame.Position = UDim2.new(0.5, -100, 0.5, -75)
+Frame.BackgroundColor3 = Color3.new(0, 0, 0)
+Frame.BorderSizePixel = 2
+Frame.BorderColor3 = Color3.fromRGB(0, 150, 255)
+Frame.Active = true
+Frame.Draggable = true
+
+local Title = Instance.new("TextLabel", Frame)
+Title.Size = UDim2.new(1, 0, 0, 40)
+Title.Text = "SASWUARE V2"
+Title.TextColor3 = Color3.new(0, 0.6, 1)
+Title.BackgroundTransparency = 1
+Title.Font = Enum.Font.GothamBold
+
+local TP = Instance.new("TextButton", Frame)
+TP.Size = UDim2.new(0.9, 0, 0, 50)
+TP.Position = UDim2.new(0.05, 0, 0, 60)
+TP.Text = "TELEPORT BASE"
+TP.BackgroundColor3 = Color3.fromRGB(30,30,30)
+TP.TextColor3 = Color3.new(1,1,1)
+
+local pos = nil
+TP.MouseButton1Click:Connect(function()
+    if not pos then
+        pos = LocalPlayer.Character.HumanoidRootPart.CFrame
+        TP.Text = "IR A BASE"
+    else
+        LocalPlayer.Character.HumanoidRootPart.CFrame = pos
+    end
+end)
