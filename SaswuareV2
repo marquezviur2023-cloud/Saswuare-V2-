@@ -1,23 +1,23 @@
 local Players = game:GetService("Players")
-local TweenService = game:GetService("TweenService")
 local LocalPlayer = Players.LocalPlayer
 
--- Mensaje de Bienvenida
+-- Mensaje de Bienvenida Seguro
 local function Welcome()
     local Gui = Instance.new("ScreenGui", LocalPlayer.PlayerGui)
     local txt = Instance.new("TextLabel", Gui)
-    txt.Size = UDim2.new(1, 0, 1, 0)
+    txt.Size = UDim2.new(1, 0, 0.2, 0)
+    txt.Position = UDim2.new(0, 0, 0.4, 0)
     txt.BackgroundTransparency = 1
-    txt.Text = "Saswuare V2 Activado"
-    txt.TextColor3 = Color3.new(1, 1, 1)
+    txt.Text = "SASWUARE V2 CARGADO ✅"
+    txt.TextColor3 = Color3.new(0, 1, 0)
     txt.Font = Enum.Font.GothamBold
-    txt.TextSize = 30
-    task.wait(2)
+    txt.TextSize = 25
+    task.wait(3)
     Gui:Destroy()
 end
 task.spawn(Welcome)
 
--- Menú Principal
+-- El Menú (Seguro y Privado)
 local SG = Instance.new("ScreenGui", LocalPlayer.PlayerGui)
 SG.ResetOnSpawn = false
 
@@ -40,15 +40,16 @@ Title.Font = Enum.Font.GothamBold
 local TP = Instance.new("TextButton", Frame)
 TP.Size = UDim2.new(0.9, 0, 0, 50)
 TP.Position = UDim2.new(0.05, 0, 0, 60)
-TP.Text = "TELEPORT BASE"
-TP.BackgroundColor3 = Color3.fromRGB(30,30,30)
-TP.TextColor3 = Color3.new(1,1,1)
+TP.Text = "MARCAR / IR A BASE"
+TP.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+TP.TextColor3 = Color3.new(1, 1, 1)
 
 local pos = nil
 TP.MouseButton1Click:Connect(function()
     if not pos then
         pos = LocalPlayer.Character.HumanoidRootPart.CFrame
-        TP.Text = "IR A BASE"
+        TP.Text = "VOLVER A BASE"
+        TP.BackgroundColor3 = Color3.fromRGB(0, 100, 255)
     else
         LocalPlayer.Character.HumanoidRootPart.CFrame = pos
     end
